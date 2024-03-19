@@ -2,23 +2,29 @@
 
 rem online_disk
 for /l %%i in (3,1,10) do (
-    echo 선택한 디스크 번호: %%i
+    echo 디스크 번호 : %%i
     echo sel disk %%i >> online_disk.txt
     echo online disk >> online_disk.txt
     diskpart /s online_disk.txt
     del online_disk.txt
+    cls
 )
 
-rem clean_disk
+rem Clear_Disk
 for /l %%i in (3,1,10) do (
-    echo 선택한 디스크 번호: %%i
-    echo sel disk %%i >> clean_disk.txt
-    echo clean >> clean_disk.txt
-    echo create part pri >> clean_disk.txt
-    echo assign >> clean_disk.txt
-    echo format fs=ntfs quick label="디스크초기화" >> clean_disk.txt
-    diskpart /s clean_disk.txt
-    del clean_disk.txt
+    echo 디스크 번호 : %%i
+    echo sel disk %%i >> Clear_Disk.txt
+    echo clean >> Clear_Disk.txt
+    echo create part pri >> Clear_Disk.txt
+    echo assign >> Clear_Disk.txt
+    echo format fs=ntfs quick label="Clear_Disk" >> Clear_Disk.txt
+    diskpart /s Clear_Disk.txt
+    del Clear_Disk.txt
+    cls
 )
 
+rem black magic 강제종료
+taskkill /f /im blackmagic.exe
 
+rem black magic 재실행
+"C:\Program Files (x86)\SMS\BlackMagic.exe"
